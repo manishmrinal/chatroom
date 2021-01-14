@@ -1,13 +1,13 @@
 const path= require('path')
 const express = require('express');
-const http = require('http')
+const https = require('https')
 const app = express();
 const socketio= require('socket.io');
 const formatMessage = require('./utils/messages')
 const {userJoin, getCurrentUser,removeUser,getRoomUsers} = require('./utils/users')
 
 
-const server = http.createServer(app);
+const server = https.createServer(app);
 const io = socketio(server);
 
 app.use(express.static(path.join(__dirname, 'public')));
