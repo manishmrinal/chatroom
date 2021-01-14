@@ -7,11 +7,16 @@ const formatMessage = require('./utils/messages')
 const {userJoin, getCurrentUser,removeUser,getRoomUsers} = require('./utils/users')
 
 
-const server = https.createServer(app);
+const server = http.createServer(app);
 const io = socketio(server);
 
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.get('/',(req,res)=>{
+
+        res.sendFile('/index.html');
+    
+});
 io.on('connection', socket =>{
 
     socket.on('joinRoom',({username , room})=>{
